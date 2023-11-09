@@ -18,14 +18,12 @@ RUN dart pub get
 COPY . .
 # Ensure packages are still up-to-date if anything has changed
 RUN dart pub get --offline
-RUN dart compile exe bin/server.dart -o bin/server
+RUN dart compile exe bin/server.dart --port 8080 -o bin/server
 
 EXPOSE 80/tcp
 EXPOSE 80/udp
 EXPOSE 443/tcp
 EXPOSE 8081/udp
-EXPOSE 5974/5974
-
 
 # Build minimal serving image from AOT-compiled `/server` and required system
 # libraries and configuration files stored in `/runtime/` from the build stage.
