@@ -28,4 +28,4 @@ COPY --from=build /app/bin/server /app/bin/
 
 
 # Start server.
-CMD ["/app/bin/server", "--port", "8080"]
+CMD ["/app/bin/server", "--port", "8080", "--define=URL=${URL}",]
