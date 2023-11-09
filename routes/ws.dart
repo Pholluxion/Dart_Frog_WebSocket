@@ -7,6 +7,9 @@ Future<Response> onRequest(RequestContext context) async {
       // Handle incoming client messages.
       print(message);
     });
+
+    // Send a message back to the client.
+    channel.sink.add('hi');
   });
   return handler(context);
 }
