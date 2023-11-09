@@ -20,6 +20,13 @@ COPY . .
 RUN dart pub get --offline
 RUN dart compile exe bin/server.dart -o bin/server
 
+EXPOSE 80/tcp
+EXPOSE 80/udp
+EXPOSE 443/tcp
+EXPOSE 8081/udp
+EXPOSE 5974/5974
+
+
 # Build minimal serving image from AOT-compiled `/server` and required system
 # libraries and configuration files stored in `/runtime/` from the build stage.
 FROM scratch
