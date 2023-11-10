@@ -25,17 +25,14 @@ Future<HttpServer> createServer(InternetAddress address, int port) async {
 
 Handler buildRootHandler() {
   final pipeline = const Pipeline().addMiddleware(middleware.middleware);
-  final router = Router()..mount('/', (context) => buildHandler()(context));
+  final router = Router()
+    ..mount('/', (RequestContext context) => buildHandler()(context));
   return pipeline.addHandler(router);
 }
 
 Handler buildHandler() {
   final pipeline = const Pipeline();
   final router = Router()
-    ..all(
-        '/ws',
-        (context) => ws.onRequest(
-              context,
-            ));
+    ..all('/ws', (RequestContext context) => ws.onRequest(context));
   return pipeline.addHandler(router);
 }
