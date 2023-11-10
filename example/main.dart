@@ -1,11 +1,17 @@
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 void main() {
-  // Connect to the remote WebSocket endpoint.
-  final uri =
-      Uri.parse('ws://dartfrogwebsocket-production.up.railway.app/5974/ws');
+  final String url = String.fromEnvironment(
+    'URL',
+    defaultValue: "viaduct.proxy.rlwy.net:44691",
+  );
+
+  final uri = Uri.parse('ws://${url}/ws');
   final channel = WebSocketChannel.connect(uri);
 
-  // Send a message to the server.
-  channel.sink.add('hello');
+  channel.stream.listen((message) {
+    print(message);
+  });
+
+  channel.sink.add('__increment__');
 }

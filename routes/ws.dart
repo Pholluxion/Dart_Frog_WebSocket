@@ -11,6 +11,8 @@ Future<Response> onRequest(RequestContext context) async {
 
       channel.stream.listen(
         (event) {
+          print(event);
+
           switch ('$event'.toMessage()) {
             case Message.increment:
               cubit.increment();
