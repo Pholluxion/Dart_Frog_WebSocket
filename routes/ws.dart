@@ -12,6 +12,7 @@ Future<Response> onRequest(RequestContext context) async {
       channel.stream.listen(
         (event) {
           print('Datos recibidos: ${event.length} bytes');
+          print('\n$event');
 
           switch ('$event'.toMessage()) {
             case Message.ledHigh:
