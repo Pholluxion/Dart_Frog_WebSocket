@@ -14,6 +14,8 @@ Future<Response> onRequest(RequestContext context) async {
           print('Datos recibidos: ${event.length} bytes');
           print('\n$event');
 
+          cubit.setImage(event.toString());
+
           switch ('$event'.toMessage()) {
             case Message.ledHigh:
               cubit.ledHigh();
