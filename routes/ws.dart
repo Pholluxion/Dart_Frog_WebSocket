@@ -11,6 +11,7 @@ Future<Response> onRequest(RequestContext context) async {
 
       channel.stream.listen(
         (event) {
+          channel.sink.add(event);
           switch ('$event'.toMessage()) {
             case Message.ledHigh:
               cubit.ledHigh();
