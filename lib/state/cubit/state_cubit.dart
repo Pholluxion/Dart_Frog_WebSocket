@@ -11,6 +11,9 @@ class StateCubit extends BroadcastCubit<String> {
   /// set the current state.
   void ledLow() => emit('ON_BOARD_LED_1=0');
 
-  ///
-  void setImage(String image) => emit(image);
+  /// enable video stream
+  void enableStream() => emit('ON_BOARD_VIDEO_1=1');
+
+  /// disable video stream
+  void disableStream() => emit('ON_BOARD_VIDEO_1=0');
 }

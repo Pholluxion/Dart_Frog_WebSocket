@@ -6,12 +6,12 @@ void main() {
     defaultValue: "viaduct.proxy.rlwy.net:44691",
   );
 
-  final uri = Uri.parse('ws://${url}/image_ws');
+  final uri = Uri.parse('ws://${url}/ws');
   final channel = WebSocketChannel.connect(uri);
 
   channel.stream.listen((message) {
     print(message);
   });
 
-  channel.sink.add([1, 2, 3, 4, 5]);
+  channel.sink.add('ON_BOARD_LED_1=0');
 }

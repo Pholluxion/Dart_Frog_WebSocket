@@ -5,6 +5,7 @@ import 'dart:io';
 
 import 'package:dart_frog/dart_frog.dart';
 
+
 import '../routes/ws.dart' as ws;
 import '../routes/image_ws.dart' as image_ws;
 
@@ -19,29 +20,21 @@ void main() async {
 Future<HttpServer> createServer(InternetAddress address, int port) async {
   final handler = Cascade().add(buildRootHandler()).handler;
   final server = await serve(handler, address, port);
-  print(
-      '\x1B[92m✓\x1B[0m Running on http://${server.address.host}:${server.port}');
+  print('\x1B[92m✓\x1B[0m Running on http://${server.address.host}:${server.port}');
   return server;
 }
 
 Handler buildRootHandler() {
   final pipeline = const Pipeline().addMiddleware(middleware.middleware);
-  final router = Router()..mount('/', (context) => buildHandler()(context));
+  final router = Router()
+    ..mount('/', (context) => buildHandler()(context));
   return pipeline.addHandler(router);
 }
 
 Handler buildHandler() {
   final pipeline = const Pipeline();
   final router = Router()
-    ..all(
-        '/ws',
-        (context) => ws.onRequest(
-              context,
-            ))
-    ..all(
-        '/image_ws',
-        (context) => image_ws.onRequest(
-              context,
-            ));
+    ..all('/ws', (context) => ws.onRequest(context,))..all('/image_ws', (context) => image_ws.onRequest(context,));
   return pipeline.addHandler(router);
 }
+

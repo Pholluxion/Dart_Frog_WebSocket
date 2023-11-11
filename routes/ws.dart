@@ -17,6 +17,12 @@ Future<Response> onRequest(RequestContext context) async {
               cubit.ledHigh();
             case Message.ledLow:
               cubit.ledLow();
+            case Message.enableStream:
+              cubit.enableStream();
+              cubit.ledHigh();
+            case Message.disableStream:
+              cubit.disableStream();
+              cubit.ledLow();
             case null:
               break;
           }
