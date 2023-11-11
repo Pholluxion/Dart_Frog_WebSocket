@@ -1,6 +1,7 @@
 import 'package:dart_frog/dart_frog.dart';
 import 'package:dart_frog_web_socket/dart_frog_web_socket.dart';
-import 'package:web_socket_counter/counter/counter.dart';
+
+import 'package:web_socket/state/state.dart';
 
 Future<Response> onRequest(RequestContext context) async {
   final handler = webSocketHandler(
@@ -11,11 +12,6 @@ Future<Response> onRequest(RequestContext context) async {
 
       channel.stream.listen(
         (event) {
-          print('Datos recibidos: ${event.length} bytes');
-          print('\n$event');
-
-          cubit.setImage(event.toString());
-
           switch ('$event'.toMessage()) {
             case Message.ledHigh:
               cubit.ledHigh();

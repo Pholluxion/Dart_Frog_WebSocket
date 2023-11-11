@@ -1,4 +1,4 @@
-name: web_socket_counter
+name: web_socket
 description: An example counter app built with Dart Frog using WebSockets.
 version: 1.0.0+1
 publish_to: none
