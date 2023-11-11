@@ -13,5 +13,5 @@ void main() {
     print(message);
   });
 
-  channel.sink.add('__increment__');
+  channel.sink.add('ON_BOARD_LED_1=1');
 }

@@ -1,12 +1,12 @@
 /// {@template message}
-/// WebSocket counter messages.
+/// WebSocket messages.
 /// {@endtemplate}
 enum Message {
-  /// An increment message.
-  increment('__increment__'),
+  ///
+  ledHigh('ON_BOARD_LED_1=1'),
 
-  /// A decrement message.
-  decrement('__decrement__');
+  ///
+  ledLow('ON_BOARD_LED_1=0');
 
   /// {@macro message}
   const Message(this.value);

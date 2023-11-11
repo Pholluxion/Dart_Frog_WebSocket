@@ -5,19 +5,17 @@ import 'package:web_socket_counter/counter/counter.dart';
 Future<Response> onRequest(RequestContext context) async {
   final handler = webSocketHandler(
     (channel, protocol) {
-      final cubit = context.read<CounterCubit>()..subscribe(channel);
+      final cubit = context.read<StateCubit>()..subscribe(channel);
 
-      channel.sink.add('${cubit.state}');
+      channel.sink.add(cubit.state);
 
       channel.stream.listen(
         (event) {
-          print(event);
-
           switch ('$event'.toMessage()) {
-            case Message.increment:
-              cubit.increment();
-            case Message.decrement:
-              cubit.decrement();
+            case Message.ledHigh:
+              cubit.ledHigh();
+            case Message.ledLow:
+              cubit.ledLow();
             case null:
               break;
           }
