@@ -11,7 +11,8 @@ Future<Response> onRequest(RequestContext context) async {
 
       channel.stream.listen(
         (event) {
-          channel.sink.add(event);
+          print('Datos recibidos: ${event.length} bytes');
+
           switch ('$event'.toMessage()) {
             case Message.ledHigh:
               cubit.ledHigh();
