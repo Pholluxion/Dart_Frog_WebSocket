@@ -3,7 +3,7 @@ import 'package:broadcast_bloc/broadcast_bloc.dart';
 ///
 class StateCubit extends BroadcastCubit<String> {
   ///
-  StateCubit() : super('HELLO WORLD');
+  StateCubit() : super('ON_BOARD_LED_1=1');
 
   /// set the current state.
   void ledHigh() => emit('ON_BOARD_LED_1=1');
