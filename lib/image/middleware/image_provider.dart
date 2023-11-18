@@ -5,4 +5,4 @@ import 'package:web_socket/image/cubit/image_cubit.dart';
 final _state = ImageCubit();
 
 /// Provides an instance of a [ImageCubit].
-final imegeProvider = provider<ImageCubit>((_) => _state);
+final imageProvider = provider<ImageCubit>((_) => _state);

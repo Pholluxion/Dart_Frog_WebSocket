@@ -1,6 +1,5 @@
 import 'package:dart_frog/dart_frog.dart';
 import 'package:dart_frog_web_socket/dart_frog_web_socket.dart';
-import 'package:web_socket/photo/model/photo.dart';
 import 'package:web_socket/photo/photo.dart';
 
 Future<Response> onRequest(RequestContext context) async {

@@ -7,6 +7,6 @@ import 'package:web_socket/state/state.dart';
 
 Handler middleware(Handler handler) => handler
     .use(stateProvider)
-    .use(imegeProvider)
+    .use(imageProvider)
     .use(dataProvider)
     .use(photoProvider);
