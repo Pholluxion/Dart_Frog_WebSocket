@@ -1,7 +1,8 @@
 import 'package:dart_frog/dart_frog.dart';
-import 'package:web_socket/image/middleware/image_provider.dart';
+
+import 'package:web_socket/data/data.dart';
+import 'package:web_socket/image/image.dart';
 import 'package:web_socket/state/state.dart';
 
-Handler middleware(Handler handler) {
-  return handler.use(stateProvider).use(imegeProvider);
-}
+Handler middleware(Handler handler) =>
+    handler.use(stateProvider).use(imegeProvider).use(dataProvider);

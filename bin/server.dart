@@ -8,6 +8,7 @@ import 'package:dart_frog/dart_frog.dart';
 
 import '../routes/ws.dart' as ws;
 import '../routes/image_ws.dart' as image_ws;
+import '../routes/data_ws.dart' as data_ws;
 
 import '../routes/_middleware.dart' as middleware;
 
@@ -34,7 +35,7 @@ Handler buildRootHandler() {
 Handler buildHandler() {
   final pipeline = const Pipeline();
   final router = Router()
-    ..all('/ws', (context) => ws.onRequest(context,))..all('/image_ws', (context) => image_ws.onRequest(context,));
+    ..all('/ws', (context) => ws.onRequest(context,))..all('/image_ws', (context) => image_ws.onRequest(context,))..all('/data_ws', (context) => data_ws.onRequest(context,));
   return pipeline.addHandler(router);
 }
 
